@@ -1,0 +1,328 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ---------------------------------------------------------- Sign- up ------------------------------------------------------- */
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #d0d0ce;
+}
+
+.sign-up {
+  width: 83%;
+  height: 95vh;
+  margin: auto;
+  margin-top: 1rem;
+  display: flex;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.img{
+    width: 80%;
+}
+
+.img img {
+  width: 100%;
+  height: 95vh;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.main-content {
+  margin-left: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.logo a {
+  text-decoration: none;
+}
+
+.logo img {
+  width: 75px;
+}
+
+.signup-name {
+  font-weight: bolder;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.sign-up input {
+  padding: 0.6rem;
+  font-size: 1.2rem;
+  width: 40%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #b7b7a4;
+}
+
+.name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.signup-input input::placeholder {
+  color: #adb5bd;
+}
+
+.user-email {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.password i {
+  margin-left: -25px;
+  cursor: pointer;
+}
+
+.password input {
+  width: 89%;
+  margin-bottom: 1.5rem;
+}
+
+.signup-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-button button {
+  font-size: 1.3rem;
+  padding: 0.7rem 4rem;
+  border: none;
+  background-color: #ffd166;
+  border-radius: 2px;
+  text-decoration: none;
+  color: black;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.signup-button button:hover {
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid #ffd166;
+  color: #ffd166;
+}
+
+.Sign-up {
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  font-weight: bolder;
+}
+
+.Sign-up a {
+  text-decoration: none;
+}
+
+.Sign-up a:hover {
+  text-decoration: black solid underline;
+}
+
+/* ------------------------------------------------------------ Responsive ------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  body{
+    background-color: white;
+  }
+  .sign-up {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    box-shadow:none;
+  }
+  .img {
+    display: none;
+  }
+  .main-content {
+    margin-left: 1rem;
+  }
+  .logo {
+    margin-top: 1rem;
+    font-size: 1.8rem;
+    margin-bottom: 1.3rem;
+  }
+  .logo img {
+    width: 66px;
+  }
+  .signup-name {
+    font-size: 1.4rem;
+    margin-bottom: 1.3rem;
+  }
+  .sign-up input {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .name {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 3rem;
+    margin-bottom: 0rem;
+  }
+  .user-email {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 3rem;
+    margin-bottom: 0rem;
+  }
+  .password input {
+    width: 83%;
+    margin-bottom: 1.5rem;
+  }
+  .Sign-up {
+    margin-top: 2rem;
+  }
+}
+@media(min-width:768px) and (max-width:1024px){
+  .sign-up input {
+    width: 70%;
+  }
+}

@@ -1,0 +1,308 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* -------------------------------------------------------------------- main content ------------------------------------------------------- */
+
+main {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main-content {
+    margin-left: 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.logo {
+    margin-top: 5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.logo a{
+    text-decoration: none;
+}
+
+.logo img{
+    width: 75px;
+}
+
+.signin-name {
+    font-weight: bolder;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.signin-input label {
+    color: #6c757d;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 0.4rem;
+}
+
+.signin-input input {
+    padding: 0.6rem;
+    font-size: 1.2rem;
+    margin-bottom: 1.3rem;
+    width: 60%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #b7b7a4;
+}
+
+.signin-input input::placeholder {
+    color: #adb5bd;
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+}
+
+.password {
+    display: flex;
+    flex-direction: column;
+}
+
+.password-input i {
+    margin-left: -25px;
+    cursor: pointer;
+}
+
+.forgot{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+.forgot a{
+    text-decoration: none;
+    color: navy;
+    font-weight: bolder;
+    font-size: 0.9rem;
+}
+
+.forgot a:hover {
+    text-decoration: black solid underline;
+}
+
+.signin-button {
+    margin-top: 1.3rem;
+    margin-left: 6rem;
+}
+
+.signin-button button {
+    font-size: 1.3rem;
+    border: none;
+    padding: 0.7rem 4rem;
+    background-color: #ffd166;
+    border-radius: 2px;
+    text-decoration: none;
+    color: black;
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.signin-button button:hover {
+    box-sizing: border-box;
+    background-color: white;
+    border: 1px solid #ffd166;
+    color: #ffd166;
+}
+
+.Sign-up {
+    margin-top: 4rem;
+    font-size: 0.9rem;
+    font-weight: bolder;
+}
+
+.Sign-up a {
+    text-decoration: none;
+    color:navy;
+}
+
+.Sign-up a:hover {
+    text-decoration: black solid underline;
+}
+.img{
+    width: 100%;
+}
+.img img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+@media(max-width:1024px) {
+    .logo img{
+        width: 75px;
+    }
+    .img {
+        display: none;
+    }
+    .main-content {
+        margin-left: 2rem;
+        width: 100%;
+    }
+    .signin-input input {
+        padding: 0.6rem;
+        font-size: 1.2rem;
+        margin-bottom: 1.3rem;
+        width: 80%;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #b7b7a4;
+    }
+    .signin-button {
+        margin-top: 1.3rem;
+        margin-left: 3.5rem;
+    }
+}
+
+@media(width: 280px) {
+    .signin-button a {
+        padding: 0.7rem 3rem;
+    }
+    .signin-button {
+        margin-top: 1.3rem;
+        margin-left: 2rem;
+    }
+}

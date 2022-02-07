@@ -1,0 +1,685 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* --------------------------------------------------------------------------------------------------------- */
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+a{
+  text-decoration: none;
+}
+
+/* nav bar--------------------------------------------------------------------------- */
+header {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 2;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  text-decoration: none;
+}
+
+.logo {
+  width: 50px;
+}
+
+.logo img {
+  width: 100%;
+}
+
+/* .logo h1 {
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+.logo p {
+  font-size: 0.9rem;
+} */
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav li {
+  margin-right: 1.2rem;
+  font-size: 14px;
+}
+
+.nav li a {
+  font-weight: bold;
+  font-size: 14px;
+  color: black;
+}
+
+.nav li:last-child a {
+  display: block;
+  background-color: #ffd166;
+  padding: 0.5rem 0.6rem;
+  border-radius: 5px;
+  transition: background-color 200ms;
+}
+
+.nav li .submit {
+  border: 1px solid black;
+  padding: 0.5rem 0.5rem;
+  border-radius: 2px;
+}
+
+.nav li:last-child a:hover {
+  background-color: #fbf8ce;
+}
+
+.nav-search-form {
+  margin-left: 1rem;
+}
+
+.nav-search-form input {
+  padding: 0.7rem;
+  border-radius: 20px;
+  background-color: #e9ecef;
+  color: #333;
+  width: 600px;
+  font-size: 0.9rem;
+  border: none;
+  outline: none;
+  transition: all 200ms;
+}
+.nav-search-form input:focus,
+.nav-search-form input:active {
+  background-color: white;
+  border: 1.5px solid #e9ecef;
+  outline: none;
+}
+.nav-search-form button {
+  position: absolute;
+  /* left: 49%; */
+  left: 655px;
+  background-color: inherit;
+  border: none;
+  border-radius: 20px;
+}
+.nav-search-form button:hover {
+  cursor: pointer;
+}
+.nav-search-form i {
+  color: black;
+  font-size: 1.3rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+/* ----------------------------------------------------------------------------------- */
+
+.profile-img {
+  margin-right: 3rem;
+}
+
+.profile-img img {
+  border-radius: 50%;
+  height: 230px;
+  width: 230px;
+  border: 5px solid #fff;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-name {
+  margin-bottom: 1.3rem;
+}
+
+.profile-name h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.profile-name h2 {
+  font-size: 1.5rem;
+  color: darkslategray;
+}
+
+.profile-social ul li {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.profile-social i {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.profile-social a {
+  text-decoration: none;
+  color: black;
+}
+
+.profile-social a:hover{
+  color: navy;
+  text-decoration: underline;
+}
+
+.profile-social {
+  margin-bottom: 1.3rem;
+}
+
+.profile-bio p {
+  font-size: 1.2rem;
+}
+
+.profile-bio span {
+  font-weight: bold;
+}
+
+.edit-profile {
+  margin-top: 3rem;
+}
+
+.edit-profile button {
+  font-size: 1rem;
+  border: 0.1rem solid #dbdbdb;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  background: none;
+}
+
+.edit-profile button:hover {
+  cursor: pointer;
+  border: 0.1rem solid #fdd166;
+}
+
+.edit-profile button i {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.images {
+  margin: 2rem 3rem;
+}
+
+.default-img{
+  width: 100%;
+  opacity: 0.2;
+  margin: auto;
+}
+
+
+.images .not-empty{
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  transition: transform 0.1s;
+}
+
+.images .not-empty:hover{
+  transform: scale(1.03);
+}
+
+
+/*----------------------------------------pop up------------------------------------------------*/
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 4; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 2% auto; /* 15% from the top and centered */
+  padding: 20px;
+  z-index: 6;
+  border-radius: 10px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.edit-bio{
+  display: flex;
+  flex-direction: column;
+}
+
+.update label{
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.update input{
+  width: 65%;
+  outline: none;
+  border: 1.5px solid #babbbd;
+  font-size: 1rem;
+  padding: 0.6rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.edit-pf_pic input{
+  border: none;
+}
+
+.edit-username, .edit-email, .edit-pf_pic, .edit-bio, .edit-insta, .edit-fb{
+  margin-bottom: 1rem;
+}
+
+.input-username{
+  margin-bottom: 0.5rem;
+}
+
+.input-bio{
+  resize: none;
+  width: 90%;
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1.5px solid #babbbd;
+  font-family: "Montserrat", sans-serif;
+}
+
+.input-pf_pic{
+  margin-top: 0.5rem;
+}
+
+.update button {
+  margin: auto;
+  font-size: 1rem;
+  display: block;
+  background: none;
+  background-color: #ffd166;
+  padding: 1rem 0.6rem;
+  border-radius: 5px;
+  transition: background-color 200ms;
+  color: black;
+  transition: all 500ms;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.update button:hover {
+  background-color: #fbf8ce;
+}
+
+/*----------------------------------------------------------------------------------------------*/
+
+@media (max-width: 767px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+  .nav-search-form {
+    display: none;
+  }
+  .nav li {
+    margin-right: 0.4rem;
+  }
+  .nav li a {
+    font-size: 0.6rem;
+  }
+  .nav li .submit {
+    border: none;
+    padding: 0rem;
+    border-radius: 0px;
+  }
+  nav li:first-child a {
+    border-right: none;
+    padding-right: 5px;
+  }
+
+  main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-img {
+    margin-right: 0rem;
+  }
+
+  .profile-img img {
+    height: 100px;
+    width: 100px;
+  }
+
+  .profile-info {
+    margin-top: 2rem;
+  }
+
+  .profile-name {
+    margin-bottom: 1.3rem;
+    text-align: center;
+  }
+  .profile-social{
+    margin-bottom: 0rem;
+  }
+  .profile-social ul li {
+    display: block;
+    margin-right: 0rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .profile-bio{
+    text-align: left;
+  }
+  .profile-bio p {
+    font-size: 1.2rem;
+  }
+
+  .profile-bio span {
+    font-weight: bold;
+  }
+
+  .edit-profile {
+    margin-top: 2rem;
+  }
+
+  .edit-profile button {
+    font-size: 1rem;
+    border: 0.1rem solid #dbdbdb;
+    border-radius: 0.3rem;
+    padding: 1rem;
+    background: none;
+  }
+
+  .edit-profile button:hover {
+    cursor: pointer;
+    border: 0.1rem solid darkorange;
+  }
+
+  .edit-profile button i {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+
+  .images {
+    margin: 0rem 0rem;
+  }
+  .modal-content{
+   width: 80%;
+   margin: 12% auto;
+  }
+  .update input{
+    padding: 0.4rem;
+  }
+}
+
+@media(min-width:768px) and (max-width:1024px){
+  .navbar {
+    padding: 0.7rem;
+  }
+  .logo {
+    width: 60px;
+  }
+  .nav-search-form {
+    display: none;
+  }
+  .nav li {
+    margin-right: 1rem;
+  }
+  .nav li a {
+    font-size: 1rem;
+  }
+  .nav li .submit {
+    border: none;
+    padding: 0rem;
+    border-radius: 0px;
+  }
+  nav li:first-child a {
+    border-right: none;
+    padding-right: 5px;
+  }
+
+  main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-img {
+    margin-right: 0rem;
+  }
+
+  .profile-img img {
+    height: 100px;
+    width: 100px;
+  }
+
+  .profile-info {
+    margin-top: 2rem;
+  }
+
+  .profile-name {
+    margin-bottom: 1.3rem;
+    text-align: center;
+  }
+  .profile-social{
+    margin-bottom: 0rem;
+    display: flex;
+    flex-direction: row;
+  }
+  .profile-social ul{
+    display: flex;
+    flex-direction: row;
+  }
+  .profile-social ul li {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .profile-bio{
+    text-align: center;
+  }
+  .profile-bio p {
+    font-size: 1.2rem;
+  }
+
+  .profile-bio span {
+    font-weight: bold;
+  }
+
+  .edit-profile {
+    margin-top: 2rem;
+  }
+
+  .edit-profile button {
+    font-size: 1rem;
+    border: 0.1rem solid #dbdbdb;
+    border-radius: 0.3rem;
+    padding: 1rem;
+    background: none;
+  }
+
+  .edit-profile button:hover {
+    cursor: pointer;
+    border: 0.1rem solid darkorange;
+  }
+
+  .edit-profile button i {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+
+  .images {
+    margin: 0rem 0rem;
+  }
+  .modal{
+    margin-top: 5rem;
+  }
+  .modal-content{
+   width: 60%;
+   margin: 12% auto;
+   padding: 2rem;
+  }
+}

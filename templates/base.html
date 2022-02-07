@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pico</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+    integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
+    crossorigin="anonymous"
+  />
+  <link rel="icon" href="{% static 'PICO-LOGO-SHORT.png' %}" type="image/gif">
+  <style>
+    header{
+      box-shadow: none;
+    }
+  </style>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="left">
+          <div class="logo">
+            <a href="/">
+              <!-- <h1>Pico</h1>
+              <p>Photos for Everyone</p> -->
+              <img src="{% static 'PICO-LOGO-SHORT.png' %}" alt="Pico" />
+            </a>
+          </div>
+          <div class="nav-search-form">
+            <form action="/search" method="get">
+              <input
+                type="text"
+                placeholder="Search"
+                name="picture"
+                id="picture"
+              />
+              <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+        <ul class="nav">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'profile' %}">Hi, {{user.username}}</a></li>
+          <li><a class="submit" href="{% url 'upload' %}">Submit Photo</a></li>
+          <li><a href="{% url 'about' %}">About us</a></li>
+          <li><a href="{% url 'logout' %}">Log-out</a></li>
+          {% else %}
+          <li><a class="submit" href="{% url 'sign-in' %}">Submit Photo</a></li>
+          <li><a href="{% url 'about' %}">About us</a></li>
+          <li><a href="{% url 'sign-in' %}">Sign-In</a></li>
+          <li><a href="{% url 'sign-up' %}">Sign-Up</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+    {% block content %} {% endblock %}
+  </body>
+</html>

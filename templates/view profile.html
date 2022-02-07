@@ -1,0 +1,127 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"
+    integrity="sha512-CRFv/YVJyElHXTiMgnhWKd2f04Hd/BUJkwcyqYmlpL1ugSYW23nNRazLk960mlz7dugTrETCGGjcsnspPOS6qA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="{% static 'profile.css' %}" />
+  <link rel="icon" href="{% static 'PICO-LOGO-SHORT.png' %}" type="image/gif">
+</head>
+
+<body>
+  <!---------------------------nav bar--------------------->
+  <header>
+    <nav class="navbar">
+      <div class="left">
+        <div class="logo">
+          <a href="/">
+            <!-- <h1>Pico</h1>
+          <p>Photos for Everyone</p> -->
+            <img src="{% static 'PICO-LOGO-SHORT.png' %}" alt="Pico" />
+          </a>
+        </div>
+        <div class="nav-search-form">
+          <form action="/search" method="get">
+            <input type="text" placeholder="Search" name="picture" id="picture" />
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+      <ul class="nav">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'profile' %}">Hi, {{user.username}}</a></li>
+        <li><a class="submit" href="{% url 'upload' %}">Submit Photo</a></li>
+        <li><a href="{% url 'about' %}">About us</a></li>
+        <li><a href="{% url 'logout' %}">Log-out</a></li>
+        {% else %}
+        <li><a class="submit" href="{% url 'sign-in' %}">Submit Photo</a></li>
+        <li><a href="{% url 'about' %}">About us</a></li>
+        <li><a href="{% url 'sign-in' %}">Sign-In</a></li>
+        <li><a href="{% url 'sign-up' %}">Sign-Up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  <!-- ------------------------------------------------- -->
+
+  <br><br><br><br>
+
+  <main>
+    {% for image in images|slice:":1" %}
+    <div class="profile-img">
+      <img src="{{image.user.profile.pf_pic.url}}" alt="" />
+    </div>
+    <div class="profile-info">
+      <div class="profile-name">
+        <h1>{{image.user.first_name}} {{image.user.last_name}}</h1>
+        <h2>{{image.user.username}}</h2>
+      </div>
+
+      <div class="profile-social">
+        <ul>
+          <li>
+            <i class="fas fa-envelope"></i><a target="on_blank"
+              href="mailto:{{profile.user.email}}">{{image.user.email}}</a>
+          </li>
+          <li>
+            <i class="fab fa-instagram"></i><a target="on_blank"
+              href="https://www.instagram.com/{{image.user.profile.insta}}/">{{image.user.profile.insta}}</a>
+          </li>
+          <li>
+            <i class="fab fa-facebook"></i><a target="on_blank"
+              href="https://www.facebook.com/{{image.user.profile.fb}}">{{image.user.profile.fb}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="profile-bio">
+        <p>{{image.user.profile.bio}}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </main>
+  <section class="images">
+    <div id="gallery">
+      {% for image in images %}
+      <a href="{% url 'image' image.id %}">
+        <img src="{{image.image.url}}" alt="" class="not-empty"/>
+      </a>
+      {% empty %}
+      <img src="{% static 'nothing_here_yet.png' %}" alt="" class="default-img">
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------------------------------- -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"
+    integrity="sha512-8dQZtymfQeDiZ4bBCFhrKZhDcZir15MqnEDBRiR6ReIVHLcdnCyJrhPIS0QifLGuMkFZsw9QMNeD9JtiLwieTQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $("#gallery").justifiedGallery({
+      rowHeight: 400,
+      lastRow: "nojustify",
+      margins: 20,
+    });
+  </script>
+</body>
+{% endblock %}
+
+</html>

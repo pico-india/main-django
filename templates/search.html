@@ -1,0 +1,172 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"
+      integrity="sha512-CRFv/YVJyElHXTiMgnhWKd2f04Hd/BUJkwcyqYmlpL1ugSYW23nNRazLk960mlz7dugTrETCGGjcsnspPOS6qA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="{% static 'PICO-LOGO-SHORT.png' %}" type="image/gif">
+    <style>
+      .picture {
+        font-family: "Montserrat", sans-serif;
+        font-weight: bolder;
+        font-size: 2rem;
+        margin-top: 2rem;
+        margin-left: 4rem;
+      }
+
+      .logo a {
+        text-decoration: none;
+      }
+
+      .logo {
+        width: 50px;
+      }
+
+      .logo img {
+        width: 100%;
+      }
+
+      header {
+        position: fixed;
+        z-index: 4;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 0.5em 0.4em -0.4em #cecccc;
+      }
+
+      .default-img {
+        width: 100%;
+        opacity: 0.2;
+        margin: auto;
+      }
+
+      .images .not-empty {
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        transition: transform 0.1s;
+      }
+
+      .images .not-empty:hover {
+        transform: scale(1.03);
+      }
+
+      @media (max-width: 900px) {
+        .picture {
+          margin-top: 1rem;
+          margin-left: 1.9rem;
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="left">
+          <div class="logo">
+            <a href="/">
+              <!-- <h1>Pico</h1>
+            <p>Photos for Everyone</p> -->
+              <img src="{% static 'PICO-LOGO-SHORT.png' %}" alt="Pico" />
+            </a>
+          </div>
+          <div class="nav-search-form">
+            <form action="/search" method="get">
+              <input
+                type="text"
+                placeholder="Search"
+                name="picture"
+                id="picture"
+              />
+            </form>
+          </div>
+        </div>
+        <ul class="nav">
+          {% if user.is_authenticated %}
+          <li>Hi, {{user.username}}</li>
+          <li><a href="{% url 'upload' %}">Submit Photo</a></li>
+          <li><a href="{% url 'about' %}">About us</a></li>
+          <li><a href="{% url 'logout' %}">Log-out</a></li>
+          {% else %}
+          <li><a href="{% url 'sign-in' %}">Submit Photo</a></li>
+          <li><a href="{% url 'about' %}">About us</a></li>
+          <li><a href="{% url 'sign-in' %}">Sign-In</a></li>
+          <li><a href="{% url 'sign-up' %}">Sign-Up</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+      <div class="category-nav">
+        {% for category in categories %}
+        <div class="category">
+          <a href="{% url 'category' category.id %}">{{category.name}}</a>
+        </div>
+        {% endfor %}
+      </div>
+    </header>
+
+    <br /><br /><br /><br /><br /><br /><br /><br />
+
+    <h1 class="picture">{{picture}}</h1>
+    <section class="images">
+      <div id="gallery">
+        {% for image in images %}
+        <a href="{% url 'image' image.id %}">
+          <img src="{{image.image.url}}" alt="" class="not-empty" />
+        </a>
+        {% empty %}
+        <img
+          src="{% static 'nothing_here_yet.png' %}"
+          alt=""
+          class="default-img"
+        />
+        {% endfor %}
+      </div>
+    </section>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"
+      integrity="sha512-8dQZtymfQeDiZ4bBCFhrKZhDcZir15MqnEDBRiR6ReIVHLcdnCyJrhPIS0QifLGuMkFZsw9QMNeD9JtiLwieTQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      $("#gallery").justifiedGallery({
+        rowHeight: 400,
+        lastRow: "nojustify",
+        margins: 20,
+      });
+    </script>
+  </body>
+  {% endblock %}
+</html>

@@ -1,0 +1,287 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+.upload {
+  display: flex;
+  justify-content: space-between;
+}
+.container {
+  height: 60vh;
+  width: 35%;
+  position: relative;
+  margin-left: 5rem;
+  margin-top: 2rem;
+}
+
+.container a {
+  text-decoration: none;
+}
+.container h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: black;
+}
+.container .wrapper {
+  position: relative;
+  height: 60vh;
+  width: 100%;
+  border-radius: 10px;
+  background: #fff;
+  border: 2px dashed #c2cdda;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.wrapper.active {
+  border: none;
+}
+.wrapper .image {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.wrapper .icon {
+  font-size: 100px;
+  color: #ffd166;
+}
+.wrapper .text {
+  font-size: 20px;
+  font-weight: 500;
+  color: #5b5b7b;
+}
+.wrapper #cancel-btn i {
+  position: absolute;
+  font-size: 20px;
+  right: 15px;
+  top: 15px;
+  color: #ffd166;
+  cursor: pointer;
+  display: none;
+}
+.wrapper.active:hover #cancel-btn i {
+  display: block;
+}
+.wrapper #cancel-btn i:hover {
+  color: #e74c3c;
+}
+.wrapper .file-name {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 8px 0;
+  font-size: 18px;
+  color: black;
+  display: none;
+  font-weight: bold;
+  background-color: #ffd166;
+}
+.wrapper.active:hover .file-name {
+  display: block;
+}
+.container #custom-btn {
+  margin-top: 30px;
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  color: black;
+  font-size: 18px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  /* background: linear-gradient(135deg, #3a8ffe 0%, #9658fe 100%); */
+  background-color: #ffd166;
+}
+
+.container #custom-btn:hover {
+  cursor: pointer;
+  background-color: #fbf8ce;
+}
+
+.info {
+  margin-right: 16rem;
+  margin-top: 6rem;
+}
+
+.info .tags {
+  display: flex;
+  flex-direction: column;
+}
+
+.info label {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.info textarea {
+  width: 130%;
+  resize: none;
+  height: 75px;
+  outline: none;
+  padding: 1rem;
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  max-height: 330px;
+  border: 1px solid #bfbfbf;
+  margin-bottom: 3rem;
+}
+
+textarea::placeholder {
+  color: #b3b3b3;
+}
+
+textarea::-webkit-scrollbar {
+  width: 0px;
+}
+
+.cate {
+  display: flex;
+  flex-direction: column;
+}
+.cate label {
+  margin-bottom: 1rem;
+}
+
+.cate select {
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background-color: #f5f3ea;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+
+.cate option {
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  background-color: #f5f3ea;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+
+.button {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button button {
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: block;
+  background-color: #ffd166;
+  padding: 1rem 0.6rem;
+  border-radius: 5px;
+  transition: background-color 200ms;
+  color: black;
+  transition: all 500ms;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.button button:hover {
+  background-color: #fbf8ce;
+}
+
+.button i {
+  font-size: 1.2rem;
+  color: black;
+  margin-right: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .upload{
+    flex-direction: column;
+  }
+  .container {
+    height: 40vh;
+    width: 90%;
+    margin-left: 3rem;
+    margin-top: 2rem;
+  }
+  .container h1 {
+    margin-bottom: 2rem;
+    font-size: 4.5rem;
+  }
+
+  .container .wrapper {
+    height: 40vh;
+  }
+
+  .wrapper .icon {
+    font-size: 15rem;
+    color: #ffd166;
+  }
+
+  .wrapper .text {
+    font-size: 3rem;
+  }
+
+  .container #custom-btn {
+    margin: auto;
+    margin-top: 2rem;
+    width: 100%;
+    height: 7vh;
+    border-radius: 10px;
+    font-size: 2.8rem;
+  }
+
+  .info {
+    margin-right: 0rem;
+    margin-top: 25rem;
+    margin-left: 3rem;
+  }
+
+  .info label {
+    font-size: 3.5rem;
+  }
+
+  .info textarea {
+    width: 90%;
+    height: 7vh;
+    padding: 1.5rem;
+    font-size: 2.3rem;
+  }
+
+  .cate select {
+    font-size: 2.8rem;
+    width: 90%;
+    padding: 0.8rem 1.1rem;
+    cursor: pointer;
+  }
+
+  .button button {
+    font-size: 3rem;
+    padding: 1rem 4.1rem;
+  }
+  .wrapper #cancel-btn i {
+    position: absolute;
+    font-size: 4rem;
+    right: 2rem;
+    top: 2rem;
+    color: #ffd166;
+    cursor: pointer;
+    display: flex;
+  }
+}

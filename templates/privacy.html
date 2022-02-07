@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block content %} {% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'privacy.css' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="icon" href="{% static 'PICO-LOGO-SHORT.png' %}" type="image/gif">
+  <title>Privacy Policies</title>
+</head>
+
+<body>
+  <div class="privacy-body">
+    <h1 class="head">Privacy Policy</h1>
+    <p>
+      The following information is to help you understand how we collect, use,
+      disseminate and safeguard the data you provide while accessing and using
+      Pico.
+    </p>
+    <h1>Personal information</h1>
+    <p>
+      You may provide certain personal information, such as your first and
+      last name, and email address, which will be displayed on your public
+      profile page on Pico
+    </p>
+    <p>
+      Whenever you visit a page, our servers automatically record certain
+      information that your web browser sends. This may include information
+      such as your IP address, browser type and language, pages viewed, the
+      date and time. This data is used for ensuring the stability of our
+      provided services
+    </p>
+    <p>
+      We respect and are committed to protecting your privacy. We do not sell
+      or otherwise provide personal information to other companies for the
+      marketing of their own products or services. We will retain your
+      personal information for as long as your account is active or as needed
+      to provide you services or as necessary to comply with our legal
+      obligations, resolve disputes, and enforce our agreements.
+    </p>
+    <p>
+      We reserve the right to disclose your personal information as required
+      by law (e.g., to comply with a subpoena, warrant, or court order) and
+      when we believe that disclosure is necessary to protect our rights,
+      avoid litigation, protect your safety or the safety of others,
+      investigate fraud, and/or respond to a government request. We may also
+      disclose information about you if we determine that such disclosure
+      should be made for reasons of national security, law enforcement, or
+      other issues of public importance.
+    </p>
+    <h1>Cookies</h1>
+    <p>
+      A cookie is a small file containing a string of characters that is sent
+      to your computer when you visit a website. When you visit the website
+      again, the cookie allows that site to recognize your browser. Cookies
+      are used on Pico to store visitor preferences and other technical
+      information required for the functionality of the Website. No personal
+      information is stored in these cookies. You can reset your browser to
+      refuse all cookies or to indicate when a cookie is being sent. However,
+      some website features or services may not function properly without
+      cookies.
+    </p>
+    <h1>Persons under 13</h1>
+    <p>
+      Pico is not marketed toward persons under the age of 13. If we discover
+      that personal information was inadvertently collected about individuals
+      under the age 13, we will promptly delete such information.
+    </p>
+  </div>
+
+  <!-- ------------------------------------------------------------------ Footer --------------------------------------------------------- -->
+  <footer>
+    <div class="content">
+      <div class="top">
+        <div class="logo-details">
+          <span class="logo_name">Pico</span>
+        </div>
+        <div class="media-icons">
+          <a target="on_blank" href="#"><i class="fab fa-facebook"></i></a>
+          <a target="on_blank" href="https://www.instagram.com/pico_india/"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="link-boxes">
+        <ul class="box">
+          <li class="link_name">Links</li>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'upload' %}">Submit Photo</a></li>
+
+        </ul>
+        <ul class="box">
+          <li class="link_name">Recommended</li>
+          <li><a href="{% url 'category' 6 %}">India</a></li>
+          <li><a href="{% url 'category' 5 %">Art and Culture</a></li>
+          <li><a href="{% url 'category' 11 %">People</a></li>
+          <li><a href="{% url 'category' 2 %">Travel</a></li>
+
+        </ul>
+        <ul class="box">
+          <li class="link_name">Legal Info</li>
+          <li><a href="{% url 'licence' %}">Licence</a></li>
+          <li><a href="{% url 'terms' %}">Terms and Conditions</a></li>
+          <li><a href="{% url 'privacy' %}">Privacy Policies</a></li>
+
+        </ul>
+        <ul class="box">
+          <li class="link_name">Contact</li>
+          <li><a target="on_blank" href="tel:+919079680135">+91 9079680135</a></li>
+          <li><a target="on_blank" href="mailto:'connectpicoindia@gmail.com'">contactpicoindia@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-details">
+      <div class="bottom_text">
+        <span class="copyright_text">Copyright © 2021 <a href="#">Pico.</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+{% endblock %}
+
+</html>

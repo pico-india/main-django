@@ -1,0 +1,122 @@
+{% block content %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Preview Image Before Upload | CodingNepal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'upload.css' %}" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="icon" href="{% static 'PICO-LOGO-SHORT.png' %}" type="image/gif">
+<body>
+
+  <div class="upload">
+    <div class="container">
+      <a href="{% url 'home' %}">
+        <h1>Pico</h1>
+      </a>
+      <div class="wrapper">
+        <div class="image">
+          <img src="" alt="" />
+        </div>
+        <div class="content">
+          <div class="icon">
+            <i class="fas fa-cloud-upload-alt"></i>
+          </div>
+          <div class="text">No file chosen, yet!</div>
+        </div>
+        <div id="cancel-btn">
+          <i class="fas fa-times"></i>
+        </div>
+        <div class="file-name">File name here</div>
+      </div>
+      <button onclick="defaultBtnActive()" id="custom-btn">
+        Choose a file
+      </button>
+      <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input id="default-btn" type="file" hidden name="images" accept="image/*"/>
+    </div>
+
+
+
+    <div class="info">
+      <div class="tags">
+        <label for="tags">Add tags</label>
+        <textarea spellcheck="false" placeholder="#pico #tags" required maxlength="300" name="tags"></textarea>
+      </div>
+      <div class="cate">
+        <label for="category">Select Appropriate Category</label>
+        <select name="category" id="category">
+          <option value="none" selected>-- choose category --</option>
+          {% for category in categories %}
+          <option value="{{category.id}}">{{category.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="button">
+        <button type="submit">
+          <i class="fas fa-arrow-circle-up"></i>Upload Image
+        </button>
+      </div>
+      <br>
+    </div>
+  </div>
+  </form>
+
+  <script>
+    const wrapper = document.querySelector(".wrapper");
+    const fileName = document.querySelector(".file-name");
+    const defaultBtn = document.querySelector("#default-btn");
+    const customBtn = document.querySelector("#custom-btn");
+    const cancelBtn = document.querySelector("#cancel-btn i");
+    const img = document.querySelector("img");
+    let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+    function defaultBtnActive() {
+      defaultBtn.click();
+    }
+    defaultBtn.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          const result = reader.result;
+          img.src = result;
+          wrapper.classList.add("active");
+        };
+        cancelBtn.addEventListener("click", function () {
+          img.src = "";
+          wrapper.classList.remove("active");
+        });
+        reader.readAsDataURL(file);
+      }
+      if (this.value) {
+        let valueStore = this.value.match(regExp);
+        fileName.textContent = valueStore;
+      }
+    });
+
+    const textarea = document.querySelector("textarea");
+    textarea.addEventListener("keyup", e => {
+      textarea.style.height = "63px";
+      let scHeight = e.target.scrollHeight;
+      textarea.style.height = `${scHeight}px`;
+    });
+  </script>
+{% for message in messages %}
+<script>
+  window.onload = function () {
+    alert("{{message}}");
+  };
+</script>
+{% endfor %}
+
+</body>
+{% endblock %}
+
+</html>

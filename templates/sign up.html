@@ -1,0 +1,83 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'sign up.css' %}" />
+  <link rel="icon" href="{% static 'PICO-LOGO-SHORT.png' %}" type="image/gif">
+</head>
+
+<body>
+
+  <main>
+    <div class="sign-up">
+      <div class="img">
+        <img src="{% static 'Sign-Up.jpg' %}" alt="" />
+      </div>
+
+      <div class="main-content">
+        <div class="logo">
+          <a href="{% url 'home' %}"><img src="{% static 'PICO-LOGO-SHORT.png' %}" alt="Pico"></a>
+        </div>
+        <div class="signup-name">
+          <h2>Sign Up your account</h2>
+        </div>
+
+        <form action="{% url 'sign-up' %}" method="POST">
+          {% csrf_token %}
+          <div class="name">
+            <input type="text" placeholder="first name" name="first_name" required />
+            <input type="text" placeholder="last name" name="last_name" required />
+          </div>
+          <div class="user-email">
+            <input type="text" placeholder="username" name="username" required />
+            <input type="email" placeholder="e-mail" name="email" required />
+          </div>
+          <div class="password">
+            <div class="pass1">
+              <input type="password" id="password" placeholder="password" name="password" required />
+              <i class="bi bi-eye-slash" id="togglePassword"></i>
+            </div>
+            <div class="cpass1">
+              <input type="password" id="cpassword" placeholder="confirm password" name="cpassword" required />
+              <i class="bi bi-eye-slash" id="togglePassword1"></i>
+            </div>
+          </div>
+
+          <div class="signup-button">
+            <button type="submit">Sign Up</button>
+          </div>
+        </form>
+
+        <div class="Sign-up">
+          <p>
+            Don't have an account?
+            <a href="{% url 'sign-in' %}">Sign-in here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <script src="{% static 'sign up.js' %}"></script>
+  {% for message in messages %}
+  <script>
+    window.onload = function () {
+      alert('{{message}}')
+    }
+  </script>
+  {% endfor %}
+</body>
+{% endblock %}
+
+</html>

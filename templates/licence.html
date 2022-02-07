@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block content %} {% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'licence.css' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="icon" href="{% static 'PICO-LOGO-SHORT.png' %}" type="image/gif">
+  <title>Licence</title>
+</head>
+
+<body>
+  <div class="licence">
+    <div class="licence-header" style="background-image: url(../static/bgimg.jpg);">
+      <div class="head-info">
+        <h1>Legal Simplicity</h1>
+        <span>All photos and videos on Pexels can be downloaded and used for
+          free.</span>
+      </div>
+      <img src="{% static 'privacy.png' %}" alt="" />
+    </div>
+    <div class="licence-body">
+      <div class="allowed">
+        <h2>What is Allowed?</h2>
+        <span>We tried to keep the Pexels License as simple as possible. Keep
+          reading to find out more.</span>
+        <ul>
+          <li><i class="far fa-check-circle"></i><p>All photos and videos on Pico are free to use.</p></li>
+          <li>
+            <i class="far fa-check-circle"></i><p>Attribution is not required. Giving credit to the photographer or
+              Pico is not necessary but always appreciated.</p>
+          </li>
+          <li>
+            <i class="far fa-check-circle"></i><p>You can modify the photos and videos from Pico. Be creative and
+              edit them as you like.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="not-allowed">
+        <h2>What is not allowed?</h2>
+        <span>Respect the hard work of our contributors and keep these
+          restrictions in mind.</span>
+        <ul>
+          <li>
+            <i class="far fa-times-circle"></i><p>Identifiable people may not appear in a bad light or in a way that
+              is offensive.</p>
+          </li>
+          <li>
+            <i class="far fa-times-circle"></i><p>Don't sell unaltered copies of a photo or video, e.g. as a poster,
+              print or on a physical product without modifying it first.</p>
+          </li>
+          <li>
+            <i class="far fa-times-circle"></i><p>Don't imply endorsement of your product by people or brands on the
+              imagery.</p>
+          </li>
+          <li>
+            <i class="far fa-times-circle"></i><p>Don't redistribute or sell the photos and videos on other stock
+              photo or wallpaper platforms.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ------------------------------------------------------ Footer --------------------------------------------------------------------- -->
+  <footer>
+    <div class="content">
+      <div class="top">
+        <div class="logo-details">
+          <span class="logo_name">Pico</span>
+        </div>
+        <div class="media-icons">
+          <a target="on_blank" href="#"><i class="fab fa-facebook"></i></a>
+          <a target="on_blank" href="https://www.instagram.com/pico_india/"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="link-boxes">
+        <ul class="box">
+          <li class="link_name">Links</li>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'upload' %}">Submit Photo</a></li>
+
+        </ul>
+        <ul class="box">
+          <li class="link_name">Recommended</li>
+          <li><a href="{% url 'category' 6 %}">India</a></li>
+          <li><a href="{% url 'category' 5 %">Art and Culture</a></li>
+          <li><a href="{% url 'category' 11 %">People</a></li>
+          <li><a href="{% url 'category' 2 %">Travel</a></li>
+
+        </ul>
+        <ul class="box">
+          <li class="link_name">Legal Info</li>
+          <li><a href="{% url 'licence' %}">Licence</a></li>
+          <li><a href="{% url 'terms' %}">Terms and Conditions</a></li>
+          <li><a href="{% url 'privacy' %}">Privacy Policies</a></li>
+
+        </ul>
+        <ul class="box">
+          <li class="link_name">Contact</li>
+          <li><a target="on_blank" href="tel:+919079680135">+91 9079680135</a></li>
+          <li><a target="on_blank" href="mailto:'connectpicoindia@gmail.com'">contactpicoindia@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom-details">
+      <div class="bottom_text">
+        <span class="copyright_text">Copyright © 2021 <a href="#">Pico.</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+{% endblock %}
+
+</html>

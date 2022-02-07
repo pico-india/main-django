@@ -1,0 +1,120 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keyword" content="Image library, Free images, No cc images, Collection, Free Images" />
+  <meta name="description" content="Free & high quality images that you can use for any project." />
+  <title>Pico</title>
+  <link rel="stylesheet" href="{% static 'home.css' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"
+    integrity="sha512-CRFv/YVJyElHXTiMgnhWKd2f04Hd/BUJkwcyqYmlpL1ugSYW23nNRazLk960mlz7dugTrETCGGjcsnspPOS6qA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+    integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous" />
+  <link rel="icon" href="{% static 'PICO-LOGO-SHORT.png' %}" type="image/gif">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="left">
+        <div class="logo">
+          <a href="/">
+            <!-- <h1>Pico</h1>
+              <p>Photos for Everyone</p> -->
+            <img src="{% static 'PICO-LOGO-SHORT.png' %}" alt="Pico">
+          </a>
+        </div>
+        <div class="nav-search-form">
+          <form action="/search" method="get">
+            <input type="text" placeholder="Search" name="picture" id="picture" />
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+      <ul class="nav">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'profile' %}">Hi, {{user.username}}</a></li>
+        <li><a href="{% url 'upload' %}" class="submit">Submit Photo</a></li>
+        <li><a href="{% url 'about' %}">About us</a></li>
+        <li><a href="{% url 'logout' %}">Log-out</a></li>
+        {% else %}
+        <li><a href="{% url 'sign-in' %}" class="submit">Submit Photo</a></li>
+        <li><a href="{% url 'about' %}">About us</a></li>
+        <li><a href="{% url 'sign-in' %}">Sign-In</a></li>
+        <li><a href="{% url 'sign-up' %}">Sign-Up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <div class="category-nav">
+      {% for category in categories %}
+      <div class="category">
+        <a href="{% url 'category' category.id %}">{{category.name}}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </header>
+
+  <br><br><br><br>
+
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <img src="{% static 'PICO.png' %}" alt="Pico">
+        <p>
+          Free & high quality images that you can use for any project. <br />
+          Powered by creators everywhere.
+        </p>
+        <div class="hero-search-form">
+          <form action="/search" method="get">
+            <input type="text" placeholder="Search photos" name="picture" id="picture" />
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+        <div class="trending-search-tags">
+          <p>
+            Trending searches: <a href="#">Flower, </a><a href="#">Wallpaper</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+  </section>
+
+  <section class="images">
+    <div id="gallery">
+      {% for image in images %}
+      <a href="{% url 'image' image.id %}">
+        <img src="{{image.image.url}}" alt="" class="not-empty"/>
+      </a>
+      {% empty %}
+      <img src="{% static 'nothing_here_yet.png' %}" alt="" class="default-img">
+      {% endfor %}
+    </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"
+    integrity="sha512-8dQZtymfQeDiZ4bBCFhrKZhDcZir15MqnEDBRiR6ReIVHLcdnCyJrhPIS0QifLGuMkFZsw9QMNeD9JtiLwieTQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $("#gallery").justifiedGallery({
+      rowHeight: 400,
+      lastRow: "nojustify",
+      margins: 20,
+    });
+  </script>
+</body>
+{% endblock %}
+
+</html>

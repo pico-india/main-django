@@ -1,0 +1,204 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+{% load crispy_forms_tags %} {% load static %}
+{% load widget_tweaks %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"
+    integrity="sha512-CRFv/YVJyElHXTiMgnhWKd2f04Hd/BUJkwcyqYmlpL1ugSYW23nNRazLk960mlz7dugTrETCGGjcsnspPOS6qA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="{% static 'profile.css' %}" />
+  <link rel="icon" href="{% static 'PICO-LOGO-SHORT.png' %}" type="image/gif">
+</head>
+
+<body>
+
+  <!---------------------------nav bar--------------------->
+  <header>
+    <nav class="navbar">
+      <div class="left">
+        <div class="logo">
+          <a href="/">
+            <!-- <h1>Pico</h1>
+          <p>Photos for Everyone</p> -->
+            <img src="{% static 'PICO-LOGO-SHORT.png' %}" alt="Pico" />
+          </a>
+        </div>
+        <div class="nav-search-form">
+          <form action="/search" method="get">
+            <input type="text" placeholder="Search" name="picture" id="picture" />
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+      <ul class="nav">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'profile' %}">Hi, {{user.username}}</a></li>
+        <li><a class="submit" href="{% url 'upload' %}">Submit Photo</a></li>
+        <li><a href="{% url 'about' %}">About us</a></li>
+        <li><a href="{% url 'logout' %}">Log-out</a></li>
+        {% else %}
+        <li><a class="submit" href="{% url 'sign-in' %}">Submit Photo</a></li>
+        <li><a href="{% url 'about' %}">About us</a></li>
+        <li><a href="{% url 'sign-in' %}">Sign-In</a></li>
+        <li><a href="{% url 'sign-up' %}">Sign-Up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  <!-- ------------------------------------------------- -->
+
+  <br><br><br><br>
+  <main>
+    <div class="profile-img">
+      <img src="{{user.profile.pf_pic.url}}" alt="" />
+    </div>
+
+    <div class="profile-info">
+      <div class="profile-name">
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
+        <h2>{{user.username}}</h2>
+      </div>
+
+      <div class="profile-social">
+        <ul>
+          <li>
+            <i class="fas fa-envelope"></i><a target="on_blank" href="mailto:{{user.email}}">{{user.email}}</a>
+          </li>
+          <li>
+            <i class="fab fa-instagram"></i><a target="on_blank"
+              href="https://www.instagram.com/{{user.profile.insta}}/">{{user.profile.insta}}</a>
+          </li>
+          <li>
+            <i class="fab fa-facebook"></i><a target="on_blank"
+              href="https://www.facebook.com/{{user.profile.fb}}">{{user.profile.fb}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="profile-bio">
+        <p>{{user.profile.bio}}</p>
+      </div>
+    </div>
+
+    <div class="edit-profile">
+      <button class="btn profile-edit-btn" id="myBtn">
+        <i class="fas fa-pen"></i>Edit Profile
+      </button>
+    </div>
+  </main>
+
+  <section class="images">
+    <div id="gallery">
+      {% for image in images %}
+      <a href="{% url 'image' image.id %}">
+        <img src="{{image.image.url}}" alt="" class="not-empty"/>
+      </a>
+      {% empty %}
+      <img src="{% static 'nothing_here_yet.png' %}" alt="" class="default-img">
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- -------------------------------------pop up---------------------------------------------------- -->
+
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="update">
+          <div class="edit-username">
+            <label for="username">Username</label>
+            {% render_field u_form.username class="input-username" placeholder="Username" id="username" %}
+            <p>Required 150 characters or fewer. Letters, digits and @/./+/_ only.</p>
+          </div>
+          <div class="edit-email">
+            <label for="email">E-mail</label>
+            {% render_field u_form.email class="input-email" placeholder="u@email.com" id="email" %}
+          </div>
+          <div class="edit-pf_pic">
+            <label for="pf_pic">Profile Pic</label>
+            {% render_field p_form.pf_pic class="input-pf_pic" id="pf_pic" %}
+          </div>
+          <div class="edit-bio">
+            <label for="bio">Bio</label>
+            {% render_field p_form.bio class="input-bio" placeholder="About Me" id="bio" cols="30" rows="10" %}
+          </div>
+          <div class="edit-insta">
+            <label for="insta">Instagram</label>
+            {% render_field p_form.insta class="input-insta" placeholder="Instagram" id="insta" %}
+          </div>
+          <div class="edit-fb">
+            <label for="fb">Facebook</label>
+            {% render_field p_form.fb class="input-fb" placeholder="Facebook" id="fb" %}
+          </div>
+          <button type="submit">Update Profile</button>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+
+  <!--  ---------------------------------- ----------------------------------------------------------- -->
+
+  <script>
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function () {
+      modal.style.display = "block";
+    };
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+
+  <!-- ------------------------------------------------------------------------------------------- -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"
+    integrity="sha512-8dQZtymfQeDiZ4bBCFhrKZhDcZir15MqnEDBRiR6ReIVHLcdnCyJrhPIS0QifLGuMkFZsw9QMNeD9JtiLwieTQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $("#gallery").justifiedGallery({
+      rowHeight: 400,
+      lastRow: "nojustify",
+      margins: 20,
+    });
+  </script>
+</body>
+{% endblock %}
+
+</html>
